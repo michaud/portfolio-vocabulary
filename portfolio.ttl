@@ -1,0 +1,210 @@
+@base <https://michaud.inrupt.net/public/ont/portfolio> .
+@prefix : <#> .
+@prefix portfolio: <https://michaud.inrupt.net/public/ont/portfolio#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<> a owl:Ontology ;
+    dcterms:title "Portfolio ontology" ;
+    dcterms:description """
+    # The Portfolio ontology aims at describing a Portfolio containing projects.
+    """ .
+
+
+portfolio:fieldLabel a rdfs:label .
+
+
+#################################################################
+#    Classes
+#################################################################
+portfolio:Agency a schema:Organisation .
+
+portfolio:Portfolio a rdfs:Class ;
+ 	rdfs:label "Portfolio"@en ;
+    portfolio:fieldLabel "period"@en ;
+	rdfs:comment "Two dates that describe a period"@en ; 
+.
+
+portfolio:name a rdf:Property;
+ 	rdfs:label "name"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "Name of the portfolio"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Portfolio ;
+.
+
+portfolio:owner a rdf:Property;
+ 	rdfs:label "owner"@en ;
+    portfolio:fieldLabel "Owner"@en ;
+	rdfs:comment "Owner of the portfolio"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Portfolio ;
+.
+
+
+
+portfolio:Project a rdfs:Class ;
+ 	rdfs:label "Project"@en ;
+    portfolio:fieldLabel "period"@en ;
+	rdfs:comment "Two dates that describe a period"@en ; 
+.
+
+portfolio:DatePeriod a rdfs:Class;
+ 	rdfs:label "DatePeriod"@en ;
+    portfolio:fieldLabel "period"@en ;
+	rdfs:comment "Two dates that describe a period"@en ;
+.
+
+portfolio:Screenshot a rdfs:Class;
+ 	rdfs:label "Screenshot"@en ;
+    portfolio:fieldLabel "screenshot"@en ;
+	rdfs:comment "A screenshot of the result of a project"@en ;
+.
+
+portfolio:shortScreenshotDescription a rdf:Property;
+ 	rdfs:label "shortScreenshotDescription"@en ;
+    portfolio:fieldLabel "Short description"@en ;
+	rdfs:comment "Short description of the screenshot"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+portfolio:screenshotDescription a rdf:Property;
+ 	rdfs:label "screenshotDescription"@en ;
+    portfolio:fieldLabel "description of the screenshot"@en ;
+	rdfs:comment "description of the screenshot"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+portfolio:screenshotUrl a rdf:Property;
+ 	rdfs:label "screenshotUrl"@en ;
+    portfolio:fieldLabel "URL"@en ;
+	rdfs:comment "url of the screenshot"@en ;
+    rdfs:range schema:string ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+portfolio:name a rdf:Property;
+ 	rdfs:label "name"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "Name of the portfolio"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:periods a rdf:Property ;
+ 	rdfs:label "Date ranges when the project was worked on"@en ;
+    portfolio:fieldLabel "period"@en ;
+	rdfs:comment "Date ranges when the project was worked on"@en ;
+	rdf:type rdf:Seq ;
+	rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:startDate a rdf:Property ;
+ 	rdfs:label "start date of a period"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "start date of a period"@en ;
+    rdfs:range xsd:date ;
+    rdfs:domain portfolio:DatePeriod ;
+.
+
+portfolio:endDate a rdf:Property ;
+ 	rdfs:label "end date of a period"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "end date of a period"@en ;
+    rdfs:range xsd:date ;
+    rdfs:domain portfolio:DatePeriod ;
+.
+
+portfolio:clientName a rdf:Property ;
+ 	rdfs:label "clientName"@en ;
+    portfolio:fieldLabel "Name"@en ;
+	rdfs:comment "Name of the client"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:description a rdf:Property ;
+ 	rdfs:label "description"@en ;
+    portfolio:fieldLabel "Description"@en ;
+	rdfs:comment "description of the project"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:tools a rdf:Property ;
+ 	rdfs:label "tools"@en ;
+    portfolio:fieldLabel "Tools"@en ;
+	rdfs:comment "tools used in the project"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:technologies a rdf:Property ;
+ 	rdfs:label "technologies"@en ;
+    portfolio:fieldLabel "Technologies"@en ;
+	rdfs:comment "technologies used in the project"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:mission a rdf:Property ;
+ 	rdfs:label "mission"@en ;
+    portfolio:fieldLabel "Mission"@en ;
+	rdfs:comment "What the idea of the project is"@en ;
+	rdfs:range schema:Text ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:result a rdf:Property ;
+ 	rdfs:label "result"@en ;
+    portfolio:fieldLabel "Result"@en ;
+	rdfs:comment "What the result of the project is"@en ;
+	rdfs:range schema:Text ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:agency a rdf:Property ;
+ 	rdfs:label "agency"@en ;
+    portfolio:fieldLabel "Agency"@en ;
+	rdfs:comment "The agency that Executed the project"@en ;
+	rdfs:range portfolio:Agency ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:roles a rdf:Property ;
+ 	rdfs:label "roles"@en ;
+    portfolio:fieldLabel "Roles"@en ;
+	rdfs:comment "The agency that Executed the project"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:responsibilities a rdf:Property ;
+ 	rdfs:label "responsibilities"@en ;
+    portfolio:fieldLabel "Responsibilities"@en ;
+	rdfs:comment "responsibilities within the project"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range  xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
+portfolio:screenshots a rdf:Property ;
+ 	rdfs:label "screenshots"@en ;
+    portfolio:fieldLabel "Screenshots"@en ;
+	rdfs:comment "Screenshots of the result of the project"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range  portfolio:Screenshot ;
+    rdfs:domain portfolio:Project ;
+.
