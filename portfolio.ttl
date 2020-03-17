@@ -19,11 +19,14 @@
 
 portfolio:fieldLabel a rdfs:label .
 
+portfolio:technology a xsd:string .
+portfolio:role a xsd:string .
+portfolio:responsibility a xsd:string .
+portfolio:tool a xsd:string .
 
 #################################################################
-#    Classes
+#    Class Portfolio
 #################################################################
-portfolio:Agency a schema:Organisation .
 
 portfolio:Portfolio a rdfs:Class ;
  	rdfs:label "Portfolio"@en ;
@@ -31,11 +34,11 @@ portfolio:Portfolio a rdfs:Class ;
 	rdfs:comment "Two dates that describe a period"@en ; 
 .
 
-portfolio:name a rdf:Property;
+portfolio:portfolioName a rdf:Property;
  	rdfs:label "name"@en ;
     portfolio:fieldLabel "Portfolio name"@en ;
 	rdfs:comment "Name of the portfolio"@en ;
-    rdfs:range schema:Text ;
+    rdfs:range xsd:string ;
     rdfs:domain portfolio:Portfolio ;
 .
 
@@ -43,59 +46,33 @@ portfolio:owner a rdf:Property;
  	rdfs:label "owner"@en ;
     portfolio:fieldLabel "Owner"@en ;
 	rdfs:comment "Owner of the portfolio"@en ;
-    rdfs:range schema:Text ;
+    rdfs:range xsd:string ;
     rdfs:domain portfolio:Portfolio ;
 .
 
+portfolio:projects a rdf:Property;
+ 	rdfs:label "projects"@en ;
+    portfolio:fieldLabel "Projects"@en ;
+	rdfs:comment "Projects of the portfolio"@en ;
+    rdfs:range portfolio:Project ;
+    rdfs:domain portfolio:Portfolio ;
+.
 
+#################################################################
+#    Class Project
+#################################################################
 
 portfolio:Project a rdfs:Class ;
  	rdfs:label "Project"@en ;
     portfolio:fieldLabel "period"@en ;
-	rdfs:comment "Two dates that describe a period"@en ; 
+	rdfs:comment "A Project"@en ; 
 .
 
-portfolio:DatePeriod a rdfs:Class;
- 	rdfs:label "DatePeriod"@en ;
-    portfolio:fieldLabel "period"@en ;
-	rdfs:comment "Two dates that describe a period"@en ;
-.
-
-portfolio:Screenshot a rdfs:Class;
- 	rdfs:label "Screenshot"@en ;
-    portfolio:fieldLabel "screenshot"@en ;
-	rdfs:comment "A screenshot of the result of a project"@en ;
-.
-
-portfolio:shortScreenshotDescription a rdf:Property;
- 	rdfs:label "shortScreenshotDescription"@en ;
-    portfolio:fieldLabel "Short description"@en ;
-	rdfs:comment "Short description of the screenshot"@en ;
-    rdfs:range xsd:string ;
-    rdfs:domain portfolio:Screenshot ;
-.
-
-portfolio:screenshotDescription a rdf:Property;
- 	rdfs:label "screenshotDescription"@en ;
-    portfolio:fieldLabel "description of the screenshot"@en ;
-	rdfs:comment "description of the screenshot"@en ;
-    rdfs:range schema:Text ;
-    rdfs:domain portfolio:Screenshot ;
-.
-
-portfolio:screenshotUrl a rdf:Property;
- 	rdfs:label "screenshotUrl"@en ;
-    portfolio:fieldLabel "URL"@en ;
-	rdfs:comment "url of the screenshot"@en ;
-    rdfs:range schema:string ;
-    rdfs:domain portfolio:Screenshot ;
-.
-
-portfolio:name a rdf:Property;
+portfolio:projectName a rdf:Property;
  	rdfs:label "name"@en ;
     portfolio:fieldLabel "Portfolio name"@en ;
 	rdfs:comment "Name of the portfolio"@en ;
-    rdfs:range schema:Text ;
+    rdfs:range xsd:string ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -104,24 +81,8 @@ portfolio:periods a rdf:Property ;
     portfolio:fieldLabel "period"@en ;
 	rdfs:comment "Date ranges when the project was worked on"@en ;
 	rdf:type rdf:Seq ;
-	rdfs:range xsd:string ;
+	rdfs:range portfolio:DatePeriod ;
     rdfs:domain portfolio:Project ;
-.
-
-portfolio:startDate a rdf:Property ;
- 	rdfs:label "start date of a period"@en ;
-    portfolio:fieldLabel "Portfolio name"@en ;
-	rdfs:comment "start date of a period"@en ;
-    rdfs:range xsd:date ;
-    rdfs:domain portfolio:DatePeriod ;
-.
-
-portfolio:endDate a rdf:Property ;
- 	rdfs:label "end date of a period"@en ;
-    portfolio:fieldLabel "Portfolio name"@en ;
-	rdfs:comment "end date of a period"@en ;
-    rdfs:range xsd:date ;
-    rdfs:domain portfolio:DatePeriod ;
 .
 
 portfolio:clientName a rdf:Property ;
@@ -145,7 +106,7 @@ portfolio:tools a rdf:Property ;
     portfolio:fieldLabel "Tools"@en ;
 	rdfs:comment "tools used in the project"@en ;
 	rdf:type rdf:Bag ;
-	rdfs:range xsd:string ;
+	rdfs:range portfolio:tool ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -154,7 +115,7 @@ portfolio:technologies a rdf:Property ;
     portfolio:fieldLabel "Technologies"@en ;
 	rdfs:comment "technologies used in the project"@en ;
 	rdf:type rdf:Bag ;
-	rdfs:range xsd:string ;
+	rdfs:range portfolio:technology ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -187,7 +148,7 @@ portfolio:roles a rdf:Property ;
     portfolio:fieldLabel "Roles"@en ;
 	rdfs:comment "The agency that Executed the project"@en ;
 	rdf:type rdf:Bag ;
-	rdfs:range xsd:string ;
+	rdfs:range portfolio:role ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -196,7 +157,7 @@ portfolio:responsibilities a rdf:Property ;
     portfolio:fieldLabel "Responsibilities"@en ;
 	rdfs:comment "responsibilities within the project"@en ;
 	rdf:type rdf:Bag ;
-	rdfs:range  xsd:string ;
+	rdfs:range portfolio:responsibility ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -207,4 +168,82 @@ portfolio:screenshots a rdf:Property ;
 	rdf:type rdf:Bag ;
 	rdfs:range  portfolio:Screenshot ;
     rdfs:domain portfolio:Project ;
+.
+
+#################################################################
+#    Class DatePeriod
+#################################################################
+
+portfolio:DatePeriod a rdfs:Class;
+ 	rdfs:label "DatePeriod"@en ;
+    portfolio:fieldLabel "period"@en ;
+	rdfs:comment "Period working on a project"@en ;
+.
+
+portfolio:startDate a rdf:Property ;
+ 	rdfs:label "start date of a period"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "start date of a period"@en ;
+    rdfs:range xsd:DateTime ;
+    rdfs:domain portfolio:DatePeriod ;
+.
+
+portfolio:endDate a rdf:Property ;
+ 	rdfs:label "end date of a period"@en ;
+    portfolio:fieldLabel "Portfolio name"@en ;
+	rdfs:comment "end date of a period"@en ;
+    rdfs:range xsd:DateTime ;
+    rdfs:domain portfolio:DatePeriod ;
+.
+
+#################################################################
+#    Class Screenshot
+#################################################################
+
+portfolio:Screenshot a rdfs:Class;
+ 	rdfs:label "Screenshot"@en ;
+    portfolio:fieldLabel "screenshot"@en ;
+	rdfs:comment "A screenshot of the result of a project"@en ;
+.
+
+portfolio:shortScreenshotDescription a rdf:Property;
+ 	rdfs:label "shortScreenshotDescription"@en ;
+    portfolio:fieldLabel "Short description"@en ;
+	rdfs:comment "Short description of the screenshot"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+portfolio:screenshotDescription a rdf:Property;
+ 	rdfs:label "screenshotDescription"@en ;
+    portfolio:fieldLabel "description of the screenshot"@en ;
+	rdfs:comment "description of the screenshot"@en ;
+    rdfs:range schema:Text ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+portfolio:screenshotUrl a rdf:Property;
+ 	rdfs:label "screenshotUrl"@en ;
+    portfolio:fieldLabel "URL"@en ;
+	rdfs:comment "url of the screenshot"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Screenshot ;
+.
+
+#################################################################
+#    Class Agency
+#################################################################
+
+portfolio:Agency a schema:Organisation ;
+ 	rdfs:label "Agency"@en ;
+    portfolio:fieldLabel "Agency"@en ;
+	rdfs:comment "Organisation that worked on the project"@en ;
+.
+
+portfolio:agencyName a rdf:Property;
+ 	rdfs:label "agencyName"@en ;
+    portfolio:fieldLabel "agency"@en ;
+	rdfs:comment "Name of the agency"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Agency ;
 .
