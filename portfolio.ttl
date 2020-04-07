@@ -101,6 +101,14 @@ portfolio:description a rdf:Property ;
     rdfs:domain portfolio:Project ;
 .
 
+portfolio:industry a rdf:Property ;
+ 	rdfs:label "industry"@en ;
+    portfolio:fieldLabel "Industry"@en ;
+	rdfs:comment "The industry the client operates in"@en ;
+    rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
 portfolio:tools a rdf:Property ;
  	rdfs:label "tools"@en ;
     portfolio:fieldLabel "Tools"@en ;
