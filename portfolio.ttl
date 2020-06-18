@@ -68,6 +68,15 @@ portfolio:Project a rdfs:Class ;
 	rdfs:comment "A Project"@en ; 
 .
 
+portfolio:locales a rdf:Property ;
+ 	rdfs:label "locales"@en ;
+    portfolio:fieldLabel "Locales"@en ;
+	rdfs:comment "which languages are used in the texts"@en ;
+	rdf:type rdf:Bag ;
+	rdfs:range xsd:string ;
+    rdfs:domain portfolio:Project ;
+.
+
 portfolio:projectName a rdf:Property;
  	rdfs:label "name"@en ;
     portfolio:fieldLabel "Portfolio name"@en ;
