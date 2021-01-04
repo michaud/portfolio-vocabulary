@@ -20,8 +20,8 @@
 portfolio:fieldLabel a rdfs:label .
 
 portfolio:technology a xsd:string .
-portfolio:role a rdfs:Literal .
-portfolio:responsibility a rdfs:Literal .
+portfolio:role a xsd:string .
+portfolio:responsibility a xsd:string .
 portfolio:tool a xsd:string .
 
 #################################################################
