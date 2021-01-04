@@ -106,7 +106,7 @@ portfolio:description a rdf:Property ;
  	rdfs:label "description"@en ;
     portfolio:fieldLabel "Description"@en ;
 	rdfs:comment "description of the project"@en ;
-    rdfs:range schema:Text ;
+    rdfs:range rdf:PlainLiteral ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -140,7 +140,7 @@ portfolio:mission a rdf:Property ;
  	rdfs:label "mission"@en ;
     portfolio:fieldLabel "Mission"@en ;
 	rdfs:comment "What the idea of the project is"@en ;
-	rdfs:range schema:Text ;
+	rdfs:range rdf:PlainLiteral ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -148,7 +148,7 @@ portfolio:result a rdf:Property ;
  	rdfs:label "result"@en ;
     portfolio:fieldLabel "Result"@en ;
 	rdfs:comment "What the result of the project is"@en ;
-	rdfs:range schema:Text ;
+	rdfs:range rdf:PlainLiteral ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -235,7 +235,7 @@ portfolio:screenshotDescription a rdf:Property;
  	rdfs:label "screenshotDescription"@en ;
     portfolio:fieldLabel "description of the screenshot"@en ;
 	rdfs:comment "description of the screenshot"@en ;
-    rdfs:range schema:Text ;
+    rdfs:range rdf:PlainLiteral ;
     rdfs:domain portfolio:Screenshot ;
 .
 
