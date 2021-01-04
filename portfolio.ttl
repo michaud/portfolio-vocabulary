@@ -20,8 +20,8 @@
 portfolio:fieldLabel a rdfs:label .
 
 portfolio:technology a xsd:string .
-portfolio:role a xsd:string .
-portfolio:responsibility a xsd:string .
+portfolio:role a rdfs:Literal .
+portfolio:responsibility a rdfs:Literal .
 portfolio:tool a xsd:string .
 
 #################################################################
@@ -79,9 +79,9 @@ portfolio:locales a rdf:Property ;
 
 portfolio:projectName a rdf:Property;
  	rdfs:label "name"@en ;
-    portfolio:fieldLabel "Portfolio name"@en ;
-	rdfs:comment "Name of the portfolio"@en ;
-    rdfs:range xsd:string ;
+    portfolio:fieldLabel "Project name"@en ;
+	rdfs:comment "Name of the project"@en ;
+    rdfs:range rdfs:Literal ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -98,7 +98,7 @@ portfolio:clientName a rdf:Property ;
  	rdfs:label "clientName"@en ;
     portfolio:fieldLabel "Name"@en ;
 	rdfs:comment "Name of the client"@en ;
-    rdfs:range xsd:string ;
+    rdfs:range rdfs:Literal ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -114,7 +114,7 @@ portfolio:industry a rdf:Property ;
  	rdfs:label "industry"@en ;
     portfolio:fieldLabel "Industry"@en ;
 	rdfs:comment "The industry the client operates in"@en ;
-    rdfs:range xsd:string ;
+    rdfs:range rdfs:Literal ;
     rdfs:domain portfolio:Project ;
 .
 
@@ -227,7 +227,7 @@ portfolio:shortScreenshotDescription a rdf:Property;
  	rdfs:label "shortScreenshotDescription"@en ;
     portfolio:fieldLabel "Short description"@en ;
 	rdfs:comment "Short description of the screenshot"@en ;
-    rdfs:range xsd:string ;
+    rdfs:range rdfs:Literal ;
     rdfs:domain portfolio:Screenshot ;
 .
 
@@ -261,6 +261,6 @@ portfolio:agencyName a rdf:Property;
  	rdfs:label "agencyName"@en ;
     portfolio:fieldLabel "agency"@en ;
 	rdfs:comment "Name of the agency"@en ;
-    rdfs:range xsd:string ;
+    rdfs:range rdfs:Literal ;
     rdfs:domain portfolio:Agency ;
 .
